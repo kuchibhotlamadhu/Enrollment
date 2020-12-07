@@ -1,0 +1,60 @@
+
+<div class="container">
+  <form [formGroup]="enrolleeForm" (ngSubmit)="onSubmit(enrolleeForm.value)">
+    <h2>Enrollee Details</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>ID</label>
+          <input type="text" class="form-control" formControlName="id">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" formControlName="active"> Activate
+      </label>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Date Of Birth:</label>
+          <input type="text" class="form-control" formControlName="dateOfBirth">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-primary" [disabled]="!enrolleeForm.dirty" >Update</button>
+      </div>
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-primary" (click)="goToHome()">Go back to list</button>
+      </div>
+    </div>
+    <div class="row"  *ngIf="message == 'success'">
+      <div class="col-md-6">
+        <p class="alert alert-success">
+            <strong>Details saved successfully!!!</strong>
+        </p>
+      </div>
+    </div>
+    <div class="row"  *ngIf="message == 'failed'">
+      <div class="col-md-6">
+        <p class="alert alert-danger">
+            <strong>Failed to save the details, Please try again</strong>
+        </p>
+      </div>
+    </div>
+  </form>
+</div>
+

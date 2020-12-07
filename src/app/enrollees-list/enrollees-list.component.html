@@ -1,0 +1,44 @@
+
+<div class="container" *ngIf="enrolleesList && enrolleesList.length > 0">
+  <h2>Enrollee's</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>INDEX</th>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>DATE OF BIRTH</th>
+        <th>STATUS</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let enrollee of enrolleesList; index as index">
+        <td>{{index + 1 }}</td>
+        <td>{{enrollee.id}}</td>
+        <td>{{enrollee.name}}</td>
+        <td>{{enrollee.dateOfBirth}}</td>
+        <td>
+          <h5>
+            <span class="badge badge-pill badge-{{ enrollee.active ? 'success' : 'danger' }}">
+              {{ enrollee.active ? "active" : "inactive" }}
+            </span>
+          </h5>
+      </td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="navigateToEditEnrollee(enrollee.id)">
+            Edit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="error">
+  <div class="col-md-6">
+    <p class="alert alert-danger">
+        <strong>Failed to load details, Please try again</strong>
+    </p>
+  </div>
+</div>
